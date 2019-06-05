@@ -61,11 +61,14 @@ if (sslCert && sslKey)
 /**
  * Listen on provided port, on all network interfaces.
  */
-httpServer.listen(httpPort);
+// Commenting out extra .listen due to
+// Error [ERR_SERVER_ALREADY_LISTEN]: Listen method has been called more than once without closing.
+//    at Server.listen (net.js:1356:11)
+// httpServer.listen(httpPort);
 httpServer.on('error', httpOnError);
 httpServer.on('listening', httpOnListening);
 
-httpsServer.listen(httpsPort);
+// httpsServer.listen(httpsPort);
 httpsServer.on('error', httpsOnError);
 httpsServer.on('listening', httpsOnListening);
 
@@ -162,8 +165,8 @@ function httpOnError(error) {
   }
 
   var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+      ? 'Pipe ' + port
+      : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -186,8 +189,8 @@ function httpsOnError(error) {
   }
 
   var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+      ? 'Pipe ' + port
+      : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -212,15 +215,15 @@ function httpsOnError(error) {
 function httpOnListening() {
   var addr = httpServer.address();
   var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+      ? 'pipe ' + addr
+      : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
 
 function httpsOnListening() {
   var addr = httpsServer.address();
   var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+      ? 'pipe ' + addr
+      : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }

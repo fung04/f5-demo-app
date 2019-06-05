@@ -10,7 +10,7 @@ function geoFindMe() {
     }
 
     function success(position) {
-        var api_key = "AIzaSyCTKvtMiWfbpGCPp_gvm-KpTq3CywRazU8"
+        var api_key = "XXXXXXXXXXXXXXX"
         var latitude  = position.coords.latitude;
         var longitude = position.coords.longitude;
 

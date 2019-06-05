@@ -1,6 +1,7 @@
-FROM alpine
+FROM alpine:latest
+# CVE-2019-5021
 RUN apk update && apk upgrade
-RUN apk add nodejs
+RUN apk add nodejs nodejs-npm
 
 # Install dependencies
 # Separate step so that if we've only changed source but not package.json, we
